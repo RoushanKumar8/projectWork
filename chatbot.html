@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot with Options</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .chat-container {
+      width: 400px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    .chat-box {
+      height: 400px;
+      overflow-y: auto;
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
+    }
+    .chat-box .message {
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .chat-box .bot {
+      background-color: #e6f7ff;
+      align-self: flex-start;
+    }
+    .chat-box .user {
+      background-color: #d9fdd3;
+      align-self: flex-end;
+    }
+    .input-container {
+      display: flex;
+      padding: 10px;
+      justify-content: space-between;
+    }
+    .input-container button {
+      padding: 10px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 2px;
+    }
+    .input-container button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-box" id="chatBox"></div>
+    <div class="input-container" id="optionsContainer"></div>
+  </div>
+
+  <script>
+    const chatBox = document.getElementById('chatBox');
+    const optionsContainer = document.getElementById('optionsContainer');
+
+    const questions = [
+      {
+        question: "Hello! What would you like to do?",
+        options: ["Know about me", "Ask for help", "Say goodbye"],
+        responses: {
+          "Know about me": "I'm a simple chatbot designed to assist you.",
+          "Ask for help": "Sure, what do you need help with?",
+          "Say goodbye": "Goodbye! Take care!"
+        }
+      },
+      {
+        question: "What do you need help with?",
+        options: ["General information", "Technical issues", "Something else"],
+        responses: {
+          "General information": "I can provide information on various topics. Just ask!",
+          "Technical issues": "I can guide you through common technical problems.",
+          "Something else": "Feel free to tell me more about your needs."
+        }
+      }
+    ];
+
+    let currentQuestionIndex = 0;
+
+    function loadQuestion() {
+      const currentQuestion = questions[currentQuestionIndex];
+      addMessage(currentQuestion.question, "bot");
+      optionsContainer.innerHTML = "";
+
+      currentQuestion.options.forEach(option => {
+        const button = document.createElement("button");
+        button.textContent = option;
+        button.onclick = () => handleOptionSelection(option);
+        optionsContainer.appendChild(button);
+      });
+    }
+
+    function handleOptionSelection(option) {
+      const currentQuestion = questions[currentQuestionIndex];
+      addMessage(option, "user");
+
+      const botReply = currentQuestion.responses[option];
+      if (botReply) {
+        setTimeout(() => {
+          addMessage(botReply, "bot");
+          // Move to the next question if available
+          if (currentQuestionIndex + 1 < questions.length) {
+            currentQuestionIndex++;
+            loadQuestion();
+          } else {
+            optionsContainer.innerHTML = ""; // End chat options
+          }
+        }, 500);
+      }
+    }
+
+    function addMessage(message, sender) {
+      const messageElement = document.createElement("div");
+      messageElement.classList.add("message", sender);
+      messageElement.textContent = message;
+      chatBox.appendChild(messageElement);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    // Start the chatbot
+    loadQuestion();
+  </script>
+</body>
+</html>

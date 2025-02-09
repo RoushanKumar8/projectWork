@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <link rel="stylesheet" href="./common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo" id="logoHome">
+            <img src="./frontend/india-map-silhouette-ujdxr0le2vdbc42n.png" alt="नमो भारतः">
+            <div class="top-logo">
+                <h3>नमो भारतः</h3>
+                <h6>वसुधैव कुटुम्बकम्</h6>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li id="home" class="active">Home</li>
+            <li id="destination">Destination</a></li>
+            <li id="experience">Experience</a></li>
+            <li id="helpChat">HelpChat</a></li>
+            <li id="cart"><i class="fa fa-shopping-cart"></i></li>
+            <li id="profile"><i class="fa-regular fa-user"></i></li>
+        </ul>
+    </header>
+
+    <!-- HelpChat -->
+    <div class="bot-container" id="botContainer">
+        <div class="helpChat">
+            <div class="bot-header">
+                <div class="one-side">
+                    <button class="back-button">                
+                        <img class="back-arrow" src="./frontend/left-chevron.png" alt="back">
+                    </button>
+                    <div class="display-pic">
+                        <img src="./frontend/robot.png" alt="bot">
+                    </div>
+                    <h2>HelpChat</h2>
+                </div>
+                <button id="cut" class="cross-button">
+                    <img class="cross" src="./frontend/close.png" alt="cross">
+                </button>
+            </div>
+            <div class="chat-box"></div>
+            <div class="bot-footer"></div>
+        </div>
+    </div>
+    <!-- HelpChat End-->
+
+    <!-- SIGN IN POP UP -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- SIGN IN POP UP END -->
+
+    <!-- SCRIPT -->
+     <script src="./common.js"></script>
+</body>
+</html>
