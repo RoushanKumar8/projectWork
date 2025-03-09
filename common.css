@@ -32,13 +32,13 @@ header {
     margin-left: 30px;
 }
 
+.logo .top-logo h3{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 .logo img{
     height: 60px;
     width: auto;
-}
-
-.logo a .top-logo{
-    text-align: center;
 }
 
 .nav-links {
